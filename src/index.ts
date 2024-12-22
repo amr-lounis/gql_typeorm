@@ -4,7 +4,7 @@ import { ApolloServer } from 'apollo-server-express';
 import { applyMiddleware } from 'graphql-middleware'
 import { makeSchema } from 'nexus';
 import * as types_gql from './gql';
-import { MyToken, myLog, https_server, myMiddleware, http_server, db_init, AppDataSource, myConfig } from './utils';
+import { MyToken, myLog, https_server, middleware_01, http_server, db_init, AppDataSource, myConfig } from './utils';
 // --------------------------------------------------
 const main = async () => {
   if (!AppDataSource.isInitialized) {
@@ -24,7 +24,7 @@ const main = async () => {
   app.use('/', express.static('public'));
   app.use('/files', serveIndex('public', { icons: true }));
   //
-  const schemaWithMiddleware = applyMiddleware(schema, myMiddleware)
+  const schemaWithMiddleware = applyMiddleware(schema, middleware_01)
   // ----------------------- https or http
   const server = myConfig.SERVER_SSL ? https_server(app, myConfig.path_ssl_crt, myConfig.path_ssl_key) : http_server(app);
   // ----------------------- ApolloServer
