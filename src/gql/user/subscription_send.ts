@@ -1,15 +1,12 @@
-import { extendType, nonNull, nullable, stringArg } from 'nexus';
+import { extendType, nullable } from 'nexus';
 import { pubsub } from '../../utils';
+import { user_notification_send_gql, user_notification_send_type } from './type';
 // **************************************************************************************************** 
 export const UserSubscriptionSend = extendType({
     type: 'Mutation',
     definition(t) {
         t.field('user_notification_send', {
-            args: {
-                receiverId: nonNull(stringArg()),
-                title: nonNull(stringArg()),
-                content: nonNull(stringArg()),
-            },
+            args: user_notification_send_gql,
             type: nullable("Boolean"),
             resolve: (parent, args: user_notification_send_type, context, info): boolean => {
                 const payload = { senderId: context.jwt.id, receiverId: args.receiverId, title: args.title, content: args.content }
@@ -20,4 +17,3 @@ export const UserSubscriptionSend = extendType({
     },
 });
 // **************************************************************************************************** 
-export type user_notification_send_type = { senderId: string, receiverId: string, title: string, content: string }

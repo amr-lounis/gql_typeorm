@@ -71,3 +71,22 @@ export type ArgsUserM = {
     email?: string
 }
 // **************************************************************************************************** 
+export type user_notification_send_type = { senderId: string, receiverId: string, title: string, content: string }
+
+export const user_notification_send_gql =
+{
+    receiverId: nonNull(stringArg()),
+    title: nonNull(stringArg()),
+    content: nonNull(stringArg()),
+}
+
+export const user_notification_receive_gql = objectType({
+    name: 'user_notification_receive_gql',
+    definition(t) {
+        t.nullable.string('senderId');
+        t.nullable.string('receiverId');
+        t.nullable.string('title');
+        t.nullable.string('content');
+    },
+});
+// **************************************************************************************************** 
