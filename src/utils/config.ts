@@ -6,7 +6,8 @@ export const myConfig: myConfigType = {
     SERVER_SSL: false,
     path_ssl_crt: "./_utils/cert-gen/sub_file.crt",
     path_ssl_key: "./_utils/cert-gen/sub_file.key",
-    myLog: true
+    myLog: true,
+    graphql_path_url: "/"
 }
 // -------------------------------------------------- types
 type myConfigType = {
@@ -17,5 +18,6 @@ type myConfigType = {
     SERVER_SSL: boolean,
     path_ssl_crt: string,
     path_ssl_key: string
-    myLog: boolean
+    myLog: boolean,
+    graphql_path_url: string
 }

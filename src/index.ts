@@ -23,7 +23,7 @@ const main = async () => {
   const app = express();
   //
   app.use(
-    '/',
+    '/public',
     express.static('public')
   );
   app.use(
@@ -62,15 +62,15 @@ const main = async () => {
     ],
   });
   await apolloServer.start();
-  apolloServer.applyMiddleware({ app, path: "/graphql" })
+  apolloServer.applyMiddleware({ app, path: myConfig.graphql_path_url })
   // ------------------------------------------------ listen
   if (myConfig.SERVER_SSL) {
     server.listen(myConfig.PORT_HTTPS, () => {
-      myLog(`https://localhost:${myConfig.PORT_HTTPS}/graphql`);
+      myLog(`https://localhost:${myConfig.PORT_HTTPS}${myConfig.graphql_path_url}`);
     });
   } else {
     server.listen(myConfig.PORT_HTTP, () => {
-      myLog(`http://localhost:${myConfig.PORT_HTTP}/graphql`);
+      myLog(`http://localhost:${myConfig.PORT_HTTP}${myConfig.graphql_path_url}`);
     });
   }
 };
