@@ -1,6 +1,7 @@
-import { booleanArg, extendType, floatArg, nonNull, nullable, stringArg } from "nexus";
+import { extendType, floatArg, nonNull, nullable, stringArg } from "nexus";
 import { AppDataSource, ContextType } from "../../utils";
-import { INVOICE_TYPES, invoice_insert, invoice_update, invoice_update_prudect, invoice_update_prudect_type, invoice_update_type, invoice_update_validation } from "./";
+import { invoice_insert, invoice_update, invoice_update_prudect, invoice_update_validation } from "./controller";
+import { INVOICE_TYPES, invoice_update_prudect_type, invoice_update_type } from "./type";
 
 export const InvoiceMutation = extendType({
     type: 'Mutation',

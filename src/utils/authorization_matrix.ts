@@ -1,5 +1,5 @@
 import { authorizations_all_get, operations_get, role_authorization_set, roles_get } from "../gql";
-import { AppDataSource } from "./data-source";
+import { AppDataSource } from "./config";
 interface Matrix {
     [roleId: string]: {
         [operationId: string]: boolean;

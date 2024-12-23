@@ -1,4 +1,4 @@
-import { extendType, objectType } from "nexus";
+import { extendType } from "nexus";
 import { AppDataSource } from "../../utils";
 import { invoices_get } from "./controller";
 import { ArgsInvoiceQ, ArgsInvoiceQQ, invoices_pages_out } from "./type";

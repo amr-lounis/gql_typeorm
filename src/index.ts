@@ -5,7 +5,7 @@ import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import { applyMiddleware } from 'graphql-middleware'
 import { makeSchema } from 'nexus';
 import * as types_gql from './gql';
-import { MyToken, myLog, https_server, middleware_01, http_server, db_init, AppDataSource, myConfig, ws_server } from './utils';
+import { MyToken, myLog, https_server, middleware_01, http_server, db_init, AppDataSource, localConfig, ws_server } from './utils';
 // --------------------------------------------------
 const main = async () => {
   if (!AppDataSource.isInitialized) {
@@ -37,7 +37,7 @@ const main = async () => {
   //
   const schemaWithMiddleware = applyMiddleware(schema, middleware_01)
   // ----------------------- https or http
-  const server = myConfig.SERVER_SSL ? https_server(app, myConfig.path_ssl_crt, myConfig.path_ssl_key) : http_server(app);
+  const server = localConfig.SERVER_SSL ? https_server(app, localConfig.path_ssl_crt, localConfig.path_ssl_key) : http_server(app);
   // ----------------------- ws
   const serverCleanup = ws_server(server, schema)
   // ----------------------- ApolloServer
@@ -65,15 +65,15 @@ const main = async () => {
     ],
   });
   await apolloServer.start();
-  apolloServer.applyMiddleware({ app, path: myConfig.graphql_path_url })
+  apolloServer.applyMiddleware({ app, path: localConfig.graphql_path_url })
   // ------------------------------------------------ listen
-  if (myConfig.SERVER_SSL) {
-    server.listen(myConfig.PORT_HTTPS, () => {
-      myLog(`https://localhost:${myConfig.PORT_HTTPS}${myConfig.graphql_path_url}`);
+  if (localConfig.SERVER_SSL) {
+    server.listen(localConfig.PORT_HTTPS, () => {
+      myLog(`https://localhost:${localConfig.PORT_HTTPS}${localConfig.graphql_path_url}`);
     });
   } else {
-    server.listen(myConfig.PORT_HTTP, () => {
-      myLog(`http://localhost:${myConfig.PORT_HTTP}${myConfig.graphql_path_url}`);
+    server.listen(localConfig.PORT_HTTP, () => {
+      myLog(`http://localhost:${localConfig.PORT_HTTP}${localConfig.graphql_path_url}`);
     });
   }
 };

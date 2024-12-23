@@ -2,7 +2,6 @@ export * from "./authorization_matrix"
 export * from "./myFunc"
 export * from "./db_init"
 export * from "./config"
-export * from "./data-source"
 export * from "./server_http"
 export * from "./server_https"
 export * from './server_ws'
