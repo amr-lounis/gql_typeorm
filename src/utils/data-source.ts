@@ -1,15 +1,12 @@
 import { DataSource } from "typeorm";
-import dotenv from 'dotenv'
-dotenv.config();
 
 const co_sqlite = new DataSource({
     entities: ["src/entities/**.ts", "src/entities/**.js"],
     type: "sqlite",
-    database: process.env.db_database || "db_server.sqlite",
+    database: "db_server.sqlite",
     synchronize: true,
     logging: false,
-    dropSchema: false,
-
+    dropSchema: true,
 });
 
 const co_mysql = new DataSource({
@@ -25,4 +22,4 @@ const co_mysql = new DataSource({
     dropSchema: false,
 });
 
-export const AppDataSource = process.env.db_type == "mysql" ? co_mysql : co_sqlite;
+export const AppDataSource = co_sqlite;

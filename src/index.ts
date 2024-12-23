@@ -10,7 +10,10 @@ import { MyToken, myLog, https_server, middleware_01, http_server, db_init, AppD
 const main = async () => {
   if (!AppDataSource.isInitialized) {
     await AppDataSource.initialize()
-      .then(async () => { myLog(`${AppDataSource.options.type}:Database connected!`); })
+      .then(async () => {
+        console.log(AppDataSource.options)
+        myLog(`Database connected!`);
+      })
       .catch((error) => { myLog(error); })
   }
   // -----------------------
