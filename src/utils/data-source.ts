@@ -20,7 +20,7 @@ const co_mysql = new DataSource({
     database: "typeorm",
     synchronize: true,
     logging: false,
-    dropSchema: true,
+    dropSchema: false,
 });
 
 export const AppDataSource = co_sqlite;

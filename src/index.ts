@@ -22,8 +22,15 @@ const main = async () => {
   // -----------------------
   const app = express();
   //
-  app.use('/', express.static('public'));
-  app.use('/files', serveIndex('public', { icons: true }));
+  app.use(
+    '/',
+    express.static('public')
+  );
+  app.use(
+    '/files',
+    express.static('files'),
+    serveIndex('files', { icons: true, view: 'details' })
+  );
   //
   const schemaWithMiddleware = applyMiddleware(schema, middleware_01)
   // ----------------------- https or http

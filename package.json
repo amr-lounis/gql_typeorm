@@ -1,8 +1,6 @@
 {
   "name": "gql_server",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
   "scripts": {
     "c": "npx tsc",
     "dev": "npx nodemon --exec ts-node src/index.ts",
