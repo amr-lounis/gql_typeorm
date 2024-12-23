@@ -23,7 +23,7 @@ export const UserSubscription = extendType({
                     if (context?.jwt?.id == payload?.receiverId) return true
                 },
             ),
-            resolve: async (payload, args, context, info) => {
+            resolve: async (payload: user_notification_send_type, args, context, info) => {
                 return new Promise((resolve, reject) => {
                     try {
                         resolve(payload);
