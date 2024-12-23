@@ -1,10 +1,11 @@
 import express from 'express';
 import serveIndex from 'serve-index';
 import { ApolloServer } from 'apollo-server-express';
+import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import { applyMiddleware } from 'graphql-middleware'
 import { makeSchema } from 'nexus';
 import * as types_gql from './gql';
-import { MyToken, myLog, https_server, middleware_01, http_server, db_init, AppDataSource, myConfig } from './utils';
+import { MyToken, myLog, https_server, middleware_01, http_server, db_init, AppDataSource, myConfig, ws_server } from './utils';
 // --------------------------------------------------
 const main = async () => {
   if (!AppDataSource.isInitialized) {
@@ -27,6 +28,8 @@ const main = async () => {
   const schemaWithMiddleware = applyMiddleware(schema, middleware_01)
   // ----------------------- https or http
   const server = myConfig.SERVER_SSL ? https_server(app, myConfig.path_ssl_crt, myConfig.path_ssl_key) : http_server(app);
+  // ----------------------- ws
+  const serverCleanup = ws_server(server, schema)
   // ----------------------- ApolloServer
   const apolloServer = new ApolloServer({
     schema: schemaWithMiddleware,
@@ -38,6 +41,18 @@ const main = async () => {
       const headerToken = ctx?.req?.headers?.token || '';
       return { jwt: MyToken.Token_Verifay(headerToken) };
     },
+    plugins: [
+      ApolloServerPluginDrainHttpServer({ httpServer: server }),
+      {
+        async serverWillStart() {
+          return {
+            async drainServer() {
+              await serverCleanup.dispose();
+            },
+          };
+        },
+      },
+    ],
   });
   await apolloServer.start();
   apolloServer.applyMiddleware({ app, path: "/graphql" })

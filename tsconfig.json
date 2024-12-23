@@ -13,5 +13,10 @@
     "noImplicitAny": false,
     "esModuleInterop": true,
     "baseUrl": ".",
+    // "outDir": "dist/src/", /* Redirect output structure to the directory. */
+    // "target": "ES2020" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */,
+    // "module": "CommonJS" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
+    // "allowJs": true, /* Allow javascript files to be compiled. */
+    // "checkJs": true, /* Report errors in .js files. */
   }
 }
