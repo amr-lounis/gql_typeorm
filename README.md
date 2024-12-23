@@ -1,5 +1,5 @@
 # graphql server as stock manager and todo manager
-# graphql server : apollo : queries + mutations + middleware 
+# graphql server : apollo : queries + mutations + subscription + middleware 
 # database server : use typeORM
 # JWT : json web token 
 
