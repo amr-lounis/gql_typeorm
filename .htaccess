@@ -1,0 +1,15 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/permrczmvv/gql.tablatinfo.com"
+PassengerBaseURI "/"
+PassengerNodejs "/home/permrczmvv/nodevenv/gql.tablatinfo.com/22/bin/node"
+PassengerAppType node
+PassengerStartupFile src/index.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
+
+RewriteEngine On
+
+RewriteRule ^$ /graphql [R=301,L]
