@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 export const localConfig: myConfigType = {
     JWT_Secret: "jwtSecret aaaaabbbbbcccccdddddeeeeefffff",
     JWT_ExpiresDay: "7 days",
@@ -24,16 +27,16 @@ const co_mysql = new DataSource({
     entities: ["src/entities/**.ts", "src/entities/**.js"],
     type: "mysql",
     host: "localhost",
-    port: Number(process.env.db_port) || 3306,
+    // port: Number(process.env.db_port) || 3306,
     database: process.env.db_database || "db_server",
     username: process.env.db_username || "root",
     password: process.env.db_password || "root",
     synchronize: true,
     logging: false,
-    dropSchema: false,
+    dropSchema: true,
 });
 
-export const AppDataSource = co_sqlite;
+export const AppDataSource = co_mysql
 // -------------------------------------------------- types
 type myConfigType = {
     JWT_Secret: string,
