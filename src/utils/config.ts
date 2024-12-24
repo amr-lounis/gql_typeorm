@@ -1,7 +1,8 @@
+import { DataSource } from "typeorm";
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const localConfig: myConfigType = {
+export const config_server: configServerType = {
     JWT_Secret: "jwtSecret aaaaabbbbbcccccdddddeeeeefffff",
     JWT_ExpiresDay: "7 days",
     PORT_HTTP: 80,
@@ -10,10 +11,10 @@ export const localConfig: myConfigType = {
     path_ssl_crt: "./_utils/cert-gen/sub_file.crt",
     path_ssl_key: "./_utils/cert-gen/sub_file.key",
     myLog: true,
-    graphql_path_url: "/"
+    graphql_path_url: "/graphql"
 }
-import { DataSource } from "typeorm";
 
+// -------------------------------------------------- database
 const co_sqlite = new DataSource({
     entities: ["src/entities/**.ts", "src/entities/**.js"],
     type: "sqlite",
@@ -38,7 +39,7 @@ const co_mysql = new DataSource({
 
 export const AppDataSource = process.env.db_database ? co_mysql : co_sqlite;
 // -------------------------------------------------- types
-type myConfigType = {
+type configServerType = {
     JWT_Secret: string,
     JWT_ExpiresDay: string,
     PORT_HTTP: number,

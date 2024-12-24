@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as readline from "readline";
 import * as crypto from "crypto";
-import { localConfig } from "./";
+import { config_server } from "./";
 // **************************************************************************************************** 
 export const getImageAsBase64 = async (url) => {
     try {
@@ -19,7 +19,7 @@ export const limitFloat = (number) => {
 // **************************************************************************************************** 
 let count = 0;
 export const myLog = (str: any) => {
-    if (localConfig.myLog == false) return;
+    if (config_server.myLog == false) return;
     console.log(`------------------------------ ${count++} ------------------------------`)
     console.log(str)
 }
