@@ -27,7 +27,7 @@ const co_mysql = new DataSource({
     entities: ["src/entities/**.ts", "src/entities/**.js"],
     type: "mysql",
     host: "localhost",
-    // port: Number(process.env.db_port) || 3306,
+    port: Number(process.env.db_port) || 3306,
     database: process.env.db_database || "db_server",
     username: process.env.db_username || "root",
     password: process.env.db_password || "root",
@@ -36,7 +36,7 @@ const co_mysql = new DataSource({
     dropSchema: true,
 });
 
-export const AppDataSource = co_mysql
+export const AppDataSource = process.env.db_database ? co_mysql : co_sqlite;
 // -------------------------------------------------- types
 type myConfigType = {
     JWT_Secret: string,
