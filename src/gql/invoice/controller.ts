@@ -1,7 +1,6 @@
 import { Between, EntityManager, Like } from "typeorm";
 import { generateID, toPage } from "../../utils";
-import { IProducts } from "../../entities/IProducts";
-import { Invoices } from "../../entities/Invoices";
+import { IProducts, Invoices } from "../../entities";
 import { productGetOrError, product_quantity_updown } from "../product/controller";
 import { ArgsInvoiceQ, INVOICE_TYPES, invoice_update_prudect_type, invoice_update_type } from "./type";
 // ****************************************************************************************************

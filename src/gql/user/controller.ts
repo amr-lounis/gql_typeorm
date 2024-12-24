@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { EntityManager, Between, Like } from "typeorm";
 import { MyToken, encodeB64, toPage } from "../../utils"
-import { Users } from "../../entities/Users";
+import { Users } from "../../entities";
 import { ArgsUserM, ArgsUserQ } from "./type";
 // **************************************************************************************************** 
 export const userGetOrError = async (manager: EntityManager, userId: string) => {

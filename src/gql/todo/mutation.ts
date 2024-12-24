@@ -1,7 +1,7 @@
 import { extendType, nonNull, nullable, stringArg } from 'nexus';
+import { Todos } from '../../entities';
 import { AppDataSource, ContextType } from '../../utils';
 import { todo_delete, todo_insert, todo_update, todo_update_validation } from './controller';
-import { Todos } from '../../entities/Todos';
 import { ArgsTodoM, ArgsTodoM_update } from './type';
 // **************************************************************************************************** 
 export const TodoMutation = extendType({

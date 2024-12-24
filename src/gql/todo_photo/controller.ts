@@ -1,5 +1,5 @@
 import { EntityManager } from 'typeorm';
-import { TPhotos } from '../../entities/TPhotos';
+import { TPhotos } from '../../entities';
 export const todo_photo_set = async (manager: EntityManager, id: string, photo: string): Promise<boolean> => {
     if (photo?.length > 524288) throw new Error("The size is greater than the maximum value");
     const photpBytes = Buffer.from(photo ?? "", 'utf8')

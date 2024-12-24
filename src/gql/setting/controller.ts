@@ -1,4 +1,4 @@
-import { Settings } from "../../entities/Settings";
+import { Settings } from "../../entities";
 import { EntityManager } from "typeorm";
 // **************************************************************************************************** 
 export const settings_get = async (manager: EntityManager) => {

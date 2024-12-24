@@ -1,5 +1,5 @@
 import { EntityManager } from 'typeorm';
-import { PCategories } from '../../entities/PCategories';
+import { PCategories } from '../../entities';
 
 // **************************************************************************************************** categories
 export const product_categories_get = async (manager: EntityManager,): Promise<string[]> => {

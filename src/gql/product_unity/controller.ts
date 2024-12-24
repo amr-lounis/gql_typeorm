@@ -1,5 +1,5 @@
 import { EntityManager } from 'typeorm';
-import { PUnits } from '../../entities/PUnits';
+import { PUnits } from '../../entities';
 
 export const product_units_get = async (manager: EntityManager,): Promise<string[]> => {
     const r = await manager.find(PUnits, {});

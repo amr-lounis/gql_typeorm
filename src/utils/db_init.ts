@@ -1,10 +1,7 @@
 import { operation_insert, product_categorie_insert, product_insert, product_unity_insert, role_insert, todo_insert, user_insert, invoice_insert, INVOICE_TYPES, invoice_update_prudect, invoice_update, user_photo_set, todo_photo_set, product_photo_set, setting_set, user_update, todo_update } from "../gql"
 import { authorization_matrix } from "./authorization_matrix"
 import { myLog, generateRandomString, generateRandomInt, AppDataSource } from "./"
-import { Invoices } from "../entities/Invoices"
-import { Products } from "../entities/Products"
-import { Settings } from "../entities/Settings"
-import { Todos } from "../entities/Todos"
+import { Invoices, Products, Settings, Todos } from "../entities"
 
 export const db_init = async (listOperationName: string[]) => {
     myLog(" +++++ initDB +++++")
@@ -24,7 +21,8 @@ const init_user_role_autorisation_matrix = async (list_users: string[], listOper
     await init_users(list_users);
     // init matrix roles
     await authorization_matrix.initMatrix()
-    // admin set allow for all operation
+    // ------------------------------------------------------------------------------------------
+    // (list_users[0] = admin) set allow for all operation
     if (authorization_matrix.matrix.hasOwnProperty(list_users[0])) {
         const operationIds = Object.keys(authorization_matrix?.matrix[list_users[0]]);
         for (const OperationId of operationIds) {

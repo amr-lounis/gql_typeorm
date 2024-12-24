@@ -1,6 +1,4 @@
-import { UOperations } from "../../entities/UOperations";
-import { URoles } from "../../entities/URoles";
-import { URolesOperations } from "../../entities/URolesOperations";
+import { URoles, UOperations, URolesOperations } from "../../entities";
 import { EntityManager } from "typeorm";
 // **************************************************************************************************** operation
 export const operations_get = async (manager: EntityManager): Promise<string[]> => {

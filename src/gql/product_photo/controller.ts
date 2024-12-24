@@ -1,5 +1,5 @@
 import { EntityManager } from 'typeorm';
-import { PPhotos } from '../../entities/PPhotos';
+import { PPhotos } from '../../entities';
 
 // **************************************************************************************************** 
 export const product_photo_set = async (manager: EntityManager, id: string, photo: string): Promise<boolean> => {

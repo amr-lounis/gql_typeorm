@@ -16,7 +16,7 @@ export const config_server: configServerType = {
 
 // -------------------------------------------------- database
 const co_sqlite = new DataSource({
-    entities: ["src/entities/**.ts", "src/entities/**.js"],
+    entities: ["src/entities/index.ts", "src/entities/index.js"],
     type: "sqlite",
     database: "db_server.sqlite",
     synchronize: true,
@@ -25,7 +25,7 @@ const co_sqlite = new DataSource({
 });
 
 const co_mysql = new DataSource({
-    entities: ["src/entities/**.ts", "src/entities/**.js"],
+    entities: ["src/entities/index.ts", "src/entities/index.js"],
     type: "mysql",
     host: process.env.db_host || "localhost",
     port: Number(process.env.db_port) || 3306,

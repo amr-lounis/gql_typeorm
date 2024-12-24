@@ -1,6 +1,6 @@
 import { EntityManager, Like, Between } from 'typeorm';
 import { toPage } from '../../utils';
-import { Products } from '../../entities/Products';
+import { Products } from '../../entities';
 import { ArgsProductQ, ArgsProductM } from './type';
 // **************************************************************************************************** products
 export const productGetOrError = async (manager: EntityManager, productId: string) => {

@@ -1,6 +1,6 @@
 import { EntityManager, Between, Like } from 'typeorm';
 import { generateID, toPage } from '../../utils';
-import { Todos } from '../../entities/Todos';
+import { Todos } from '../../entities';
 import { ArgsTodoM, ArgsTodoQ } from './type';
 
 // **************************************************************************************************** 
