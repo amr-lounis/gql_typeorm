@@ -7,8 +7,9 @@ export const db_init = async (listOperationName: string[]) => {
     myLog(" +++++ initDB +++++")
     const admin = 'admin'
     const employee = 'employee'
+    const customer = 'customer'
 
-    await init_user_role_autorisation_matrix([admin, employee], listOperationName)
+    await init_user_role_autorisation_matrix([admin, employee, customer], listOperationName)
     await init_setting();
     await init_todo();
     await init_product();
@@ -22,7 +23,7 @@ const init_user_role_autorisation_matrix = async (list_users: string[], listOper
     // init matrix roles
     await authorization_matrix.initMatrix()
     // ------------------------------------------------------------------------------------------
-    // (list_users[0] = admin) set allow for all operation
+    // (set first user in list_users as admin) set allow for all operation
     if (authorization_matrix.matrix.hasOwnProperty(list_users[0])) {
         const operationIds = Object.keys(authorization_matrix?.matrix[list_users[0]]);
         for (const OperationId of operationIds) {
